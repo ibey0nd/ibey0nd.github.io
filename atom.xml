@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ibey0nd.github.io/"/>
-  <updated>2017-06-27T03:57:23.163Z</updated>
+  <updated>2017-06-27T05:39:07.576Z</updated>
   <id>https://ibey0nd.github.io/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>just for test</title>
+    <link href="https://ibey0nd.github.io/2017/just-for-test/"/>
+    <id>https://ibey0nd.github.io/2017/just-for-test/</id>
+    <published>2017-06-27T05:38:52.000Z</published>
+    <updated>2017-06-27T05:39:07.576Z</updated>
+    
+    <content type="html"><![CDATA[<p>just for test</p>
+<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;just for test&lt;/p&gt;
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>title</title>
