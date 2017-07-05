@@ -41,10 +41,10 @@ var AutoAnimate = {
 	},
 	shdowInfo: function() {
 		$(".block div").mouseenter(function() {
-			$(this).find(".info").css("bottom", "10px");
+			$(this).find(".info").css("top", "0px");
 		});
 		$(".block div").mouseleave(function() {
-			$(this).find(".info").css("bottom", "-380px");
+			$(this).find(".info").css("top", "380px");
 		});
 	},
 	navShow: function() {
